@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080808">
+  <meta name="description" content="Create Wink dashboard">
+  <title>Wink Studio — Create</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="Wink Studio home">
+        <span class="brand-mark">w.</span><span class="brand-copy">wink<span>studio</span></span>
+      </a>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="nav">
+        <a class="nav-item active" href="#create"><span class="nav-icon">✳</span> Create Wink <span class="nav-dot"></span></a>
+        <a class="nav-item" href="#activity"><span class="nav-icon">↗</span> Activity</a>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="side-label">SYSTEM</div>
+        <div class="system-card"><span class="status-pulse"></span><div><strong>API workspace</strong><small id="sidebarStatus">Belum terhubung</small></div></div>
+        <button class="nav-item nav-button" id="settingsButton"><span class="nav-icon">⚙</span> Settings</button>
+        <div class="profile-mini"><div class="profile-avatar">W</div><div><strong>Wink Studio</strong><small>Private workspace</small></div><span class="profile-menu">•••</span></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button>
+        <div class="breadcrumbs"><span>Workspace</span><span class="crumb-slash">/</span><strong>Create Wink</strong></div>
+        <div class="topbar-right"><span class="secure-label"><span class="tiny-lock">⌑</span> PRIVATE WORKSPACE</span><div class="top-avatar">W</div></div>
+      </header>
+
+      <section class="page-heading" id="create">
+        <div>
+          <div class="eyebrow"><span class="eyebrow-line"></span> ACCOUNT WORKSPACE</div>
+          <h1>Create <span>Wink.</span></h1>
+          <p class="subheading">Kelola proses pembuatan akun dan detail hasil dalam satu ruang yang rapi.</p>
+        </div>
+        <div class="heading-meta"><span class="live-dot"></span><span id="headerStatus">Menunggu koneksi API</span></div>
+      </section>
+
+      <section class="overview-grid">
+        <article class="metric-card">
+          <div class="metric-top"><span>Total sesi</span><span class="metric-icon">↗</span></div>
+          <div class="metric-value" id="sessionMetric">0</div><div class="metric-foot">Sesi pada browser ini</div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-top"><span>Akun dibuat</span><span class="metric-icon">◈</span></div>
+          <div class="metric-value" id="accountMetric">0</div><div class="metric-foot">Hasil sukses pada sesi ini</div>
+        </article>
+        <article class="metric-card">
+          <div class="metric-top"><span>Status layanan</span><span class="metric-icon">⌁</span></div>
+          <div class="metric-value metric-status"><span class="status-pulse"></span><span id="serviceMetric">Idle</span></div><div class="metric-foot" id="serviceFoot">Siap saat diperlukan</div>
+        </article>
+      </section>
+
+      <section class="workspace-grid">
+        <div class="panel create-panel">
+          <div class="panel-heading">
+            <div><div class="panel-kicker">GENERATOR</div><h2>New account session</h2><p>Mulai satu permintaan dan lihat hasilnya di sini.</p></div>
+            <div class="panel-symbol">✳</div>
+          </div>
+          <div class="rule"></div>
+          <form id="createForm">
+            <label class="field-label" for="quantity">JUMLAH AKUN</label>
+            <div class="quantity-box">
+              <div class="quantity-main"><span class="quantity-number">01</span><span class="quantity-copy"><strong>Satu akun per permintaan</strong><small>Mode terkontrol untuk menghindari request massal.</small></span></div>
+              <span class="quantity-tag">LIMIT 1</span>
+            </div>
+            <div class="field-help"><span class="info-icon">i</span> Setiap permintaan dibatasi satu akun dan perlu akses workspace.</div>
+            <div class="form-footer">
+              <div class="form-note"><span class="shield-icon">◇</span><span>Request dikirim melalui server<br><strong>API key tidak ditampilkan di browser</strong></span></div>
+              <button class="primary-button" id="createButton" type="submit"><span class="button-text">Create Wink</span><span class="button-arrow">↗</span></button>
+            </div>
+          </form>
+        </div>
+
+        <aside class="panel info-panel">
+          <div class="panel-kicker">QUICK GUIDE</div><h2>Before you create</h2>
+          <div class="guide-list">
+            <div class="guide-row"><span class="guide-number">01</span><div><strong>Workspace access</strong><p>Masukkan password workspace yang kamu atur di Vercel Environment Variables.</p></div></div>
+            <div class="guide-row"><span class="guide-number">02</span><div><strong>Secure request</strong><p>Server meneruskan request ke API. API key disimpan di server, bukan di source frontend.</p></div></div>
+            <div class="guide-row"><span class="guide-number">03</span><div><strong>Review the result</strong><p>Periksa hasil yang dikembalikan API sebelum menyalin detail akun.</p></div></div>
+          </div>
+          <div class="info-bottom"><span class="info-bottom-icon">↗</span><span>Gunakan hanya API dan layanan yang kamu berwenang akses.</span></div>
+        </aside>
+      </section>
+
+      <section class="panel results-panel">
+        <div class="results-heading"><div><div class="panel-kicker">OUTPUT</div><h2>Latest result</h2><p>Hasil permintaan terbaru akan muncul di sini.</p></div><span class="result-counter" id="resultCounter">NO RESULT</span></div>
+        <div id="emptyState" class="empty-state"><div class="empty-art"><span class="empty-ring ring-one"></span><span class="empty-ring ring-two"></span><span class="empty-center">✳</span></div><strong>Belum ada hasil</strong><p>Hasil dari sesi Create Wink akan tampil di area ini.</p></div>
+        <div id="resultArea" class="result-area hidden"></div>
+      </section>
+
+      <section class="panel activity-panel" id="activity">
+        <div class="results-heading"><div><div class="panel-kicker">SESSION LOG</div><h2>Recent activity</h2></div><button class="text-button" id="clearActivity">Clear history ↗</button></div>
+        <div id="activityList" class="activity-list"><div class="activity-empty">Aktivitas akan tercatat setelah request pertama.</div></div>
+      </section>
+      <footer class="footer"><span>WINK STUDIO <span class="footer-separator">/</span> CREATE WORKSPACE</span><span>Minimal by design. Built for clarity.</span></footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop hidden" id="accessModal" role="dialog" aria-modal="true" aria-labelledby="accessTitle">
+    <div class="modal-card">
+      <button class="modal-close" id="closeModal" aria-label="Close">×</button>
+      <div class="modal-mark">w.</div><div class="panel-kicker">PRIVATE WORKSPACE</div><h2 id="accessTitle">Workspace access</h2>
+      <p>Masukkan password dashboard yang disimpan sebagai <code>DASHBOARD_PASSWORD</code> di Vercel.</p>
+      <form id="accessForm"><label class="field-label" for="workspacePassword">WORKSPACE PASSWORD</label><input id="workspacePassword" type="password" autocomplete="current-password" placeholder="Masukkan password" required><button class="primary-button modal-submit" type="submit"><span>Continue</span><span class="button-arrow">↗</span></button></form>
+      <div class="modal-hint">Password hanya disimpan di sesi tab browser ini.</div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="/app.js"></script>
+</body>
+</html>
